@@ -6,7 +6,7 @@ const HOST = '0.0.0.0';
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.end('Austins node app!\n');
+  res.end('Austins amazing node app!\n');
 });
 
 server.listen(PORT, HOST, () => {
