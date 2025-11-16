@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: austin-nodejs
+  description: austin-nodejs - Node.js application
+  annotations:
+    github.com/project-slug: New-Goblins/austin-nodejs
+spec:
+  type: service
+  lifecycle: production
+  owner: user:guest

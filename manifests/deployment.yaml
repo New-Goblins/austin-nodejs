@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: austin-nodejs
+  labels:
+    app: austin-nodejs
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: austin-nodejs
+  template:
+    metadata:
+      labels:
+        app: austin-nodejs
+    spec:
+      containers:
+      - name: austin-nodejs
+        image: ghcr.io/new-goblins/austin-nodejs:v1.0.0
+        ports:
+        - containerPort: 3000
+          name: http
+          protocol: TCP
+        env:
+        - name: PORT
+          value: "3000"
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "200m"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
